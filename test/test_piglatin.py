@@ -40,6 +40,17 @@ class TestPigLatin(unittest.TestCase):
 
     # ========= US 4 =========
 
-    def test_single_word_starting_with_consonant_or_y_moves_first_letter_to_end_and_append_ay(self):
+    def test_single_word_starting_with_consonant_or_y_moves_first_letter_to_end_and_appends_ay(self):
         translator = PigLatin("hello")
         self.assertEqual("ellohay", translator.translate())
+
+    # ========= US 5 =========
+
+    def test_single_word_starting_with_more_consonants_moves_consonants_to_end_and_appends_ay(self):
+        translator = PigLatin("known")
+        self.assertEqual("ownknay", translator.translate())
+
+    def test_single_word_starting_with_four_consonants_moves_consonants_to_end_and_appends_ay(self):
+        translator = PigLatin("chthonic")
+        self.assertEqual("onicchthay", translator.translate())
+
