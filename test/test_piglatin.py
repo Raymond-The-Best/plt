@@ -23,3 +23,9 @@ class TestPigLatin(unittest.TestCase):
     def test_create_translator_empty_phrase(self):
         translator = PigLatin("")
         self.assertEqual(translator.translate(), "nil")
+
+    # ========= US 3 =========
+
+    def test_single_word_starting_with_vowel_ending_in_y_appends_nay(self):
+        translator = PigLatin("any")
+        self.assertEqual(translator.translate(), "anynay")
