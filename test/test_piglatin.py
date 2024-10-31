@@ -16,16 +16,20 @@ class TestPigLatin(unittest.TestCase):
 
     def test_create_translator_and_get_phrase(self):
         translator = PigLatin("hello world")
-        self.assertEqual(translator.get_phrase(), "hello world")
+        self.assertEqual("hello world", translator.get_phrase())
 
     # ========= US 2 =========
 
     def test_create_translator_empty_phrase(self):
         translator = PigLatin("")
-        self.assertEqual(translator.translate(), "nil")
+        self.assertEqual("nil", translator.translate())
 
     # ========= US 3 =========
 
     def test_single_word_starting_with_vowel_ending_in_y_appends_nay(self):
         translator = PigLatin("any")
-        self.assertEqual(translator.translate(), "anynay")
+        self.assertEqual("anynay", translator.translate())
+
+    def test_single_word_starting_with_vowel_ending_with_vowel_appends_yay(self):
+        translator = PigLatin("apple")
+        self.assertEqual("appleyay", translator.translate())
