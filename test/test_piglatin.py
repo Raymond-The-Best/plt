@@ -70,7 +70,11 @@ class TestPigLatin(unittest.TestCase):
         translator = PigLatin("hello world!")
         self.assertEqual("ellohay orldway!", translator.translate())
 
+    def test_translate_illegal_punctuation_raises_PigLatinError(self):
+        self.assertRaises(PigLatinError, PigLatin("[hello world]").translate)
+
     # ========= US 8 =========
+
     def test_translate_phrase_with_upper_case_words(self):
         translator = PigLatin("APPLE")
         self.assertEqual("APPLEYAY", translator.translate())

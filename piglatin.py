@@ -1,3 +1,4 @@
+from error import PigLatinError
 
 class PigLatin:
     AUTHED_PUNC = ".,;:'?!() -"
@@ -11,6 +12,8 @@ class PigLatin:
     def translate(self) -> str:
         if self.phrase == "":
             return "nil"
+        if any(char in self.phrase for char in "[]{}"):
+            raise PigLatinError()
         table = self.phrase.maketrans(PigLatin.AUTHED_PUNC, " "*len(PigLatin.AUTHED_PUNC))
         words = self.phrase.translate(table).split()
         translation_dict = {}
@@ -47,4 +50,3 @@ class PigLatin:
             translated_word = word[index:] + word[:index] + 'ay'
 
         return translated_word
-
