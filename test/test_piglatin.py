@@ -37,3 +37,9 @@ class TestPigLatin(unittest.TestCase):
     def test_single_word_starting_with_vowel_ending_with_consonant_appends_ay(self):
         translator = PigLatin("ask")
         self.assertEqual("askay", translator.translate())
+
+    # ========= US 4 =========
+
+    def test_single_word_starting_with_consonant_or_y_moves_first_letter_to_end_and_append_ay(self):
+        translator = PigLatin("hello")
+        self.assertEqual("ellohay", translator.translate())

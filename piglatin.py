@@ -20,7 +20,7 @@ class PigLatin:
                 else:
                     translated_words.append(word + 'ay')
             else:
-                # Placeholder for other translation rules
-                translated_words.append(word)
+                # Handling words starting with a consonant or 'y'
+                translated_words.append(word[1:] + word[0] + 'ay')
         return ' '.join(translated_words)
 
