@@ -22,4 +22,4 @@ class TestPigLatin(unittest.TestCase):
 
     def test_create_translator_empty_phrase(self):
         translator = PigLatin("")
-        self.assertEqual(translator.get_phrase(), "nil")
+        self.assertEqual(translator.translate(), "nil")
