@@ -69,3 +69,16 @@ class TestPigLatin(unittest.TestCase):
     def test_translate_phrase_with_punctuation(self):
         translator = PigLatin("hello world!")
         self.assertEqual("ellohay orldway!", translator.translate())
+
+    # ========= US 8 =========
+    def test_translate_phrase_with_upper_case_words(self):
+        translator = PigLatin("APPLE")
+        self.assertEqual("APPLEYAY", translator.translate())
+
+    def test_translate_phrase_with_title_case_words(self):
+        translator = PigLatin("Hello")
+        self.assertEqual("Ellohay", translator.translate())
+
+    def test_translate_complexe_sentence(self):
+        translator = PigLatin("Hello STUDENTS; time to CODE for Real? Maybe! (Real-time)")
+        self.assertEqual('Ellohay UDENTSSTAY; imetay otay ODECAY orfay Ealray? Aybemay! (Ealray-imetay)', translator.translate())
