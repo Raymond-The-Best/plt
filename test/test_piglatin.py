@@ -54,3 +54,12 @@ class TestPigLatin(unittest.TestCase):
         translator = PigLatin("chthonic")
         self.assertEqual("onicchthay", translator.translate())
 
+    # ========= US 6 =========
+
+    def test_phrase_with_several_words(self):
+        translator = PigLatin("hello world")
+        self.assertEqual("ellohay orldway", translator.translate())
+
+    def test_phrase_words_separated_with_dash_must_be_handled_as_individual_words(self):
+        translator = PigLatin("well-being")
+        self.assertEqual("ellway-eingbay", translator.translate())
