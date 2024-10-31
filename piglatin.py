@@ -1,5 +1,8 @@
 
 class PigLatin:
+
+    AUTHED_PUNC = ".,;:'?!() -"
+
     def __init__(self, phrase: str):
         self.phrase = phrase
 
@@ -9,19 +12,19 @@ class PigLatin:
     def translate(self) -> str:
         if self.phrase == "":
             return "nil"
-        words = self.phrase.split()
-        translated_words = []
+        table = self.phrase.maketrans(PigLatin.AUTHED_PUNC, " "*len(PigLatin.AUTHED_PUNC))
+        words =  self.phrase.translate(table).split()
+        print(words)
+        translation_dict = {}
         for word in words:
-            if "-" in word:
-                translated_subwords = []
-                subwords = word.split("-")
-                for subword in subwords:
-                    translated_subwords.append(self.translate_single_word(subword))
-                translated_words.append("-".join(translated_subwords))
+            translated_word = self.translate_single_word(word)
+            translation_dict[word] = translated_word
+        print(translation_dict)
+        translated_phrase = self.phrase
+        for word, translation in translation_dict.items():
+            translated_phrase = translated_phrase.replace(word, translation)
 
-            else:
-                translated_words.append(self.translate_single_word(word))
-        return ' '.join(translated_words)
+        return translated_phrase
 
     def translate_single_word(self, word: str) -> str:
         translated_word = ""

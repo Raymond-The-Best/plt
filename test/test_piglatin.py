@@ -63,3 +63,9 @@ class TestPigLatin(unittest.TestCase):
     def test_phrase_words_separated_with_dash_must_be_handled_as_individual_words(self):
         translator = PigLatin("well-being")
         self.assertEqual("ellway-eingbay", translator.translate())
+
+    # ========= US 7 =========
+
+    def test_translate_phrase_with_punctuation(self):
+        translator = PigLatin("hello world!")
+        self.assertEqual("ellohay orldway!", translator.translate())
